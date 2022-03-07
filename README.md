@@ -1,16 +1,15 @@
 # couise
 
-A new Flutter project.
+An app for people who like questions and answering them!
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### Run web server
 
-A few resources to get you started if this is your first Flutter project:
+- Install ruby
+  - If you have ruby 3 or greater you'll need to install a web server like webrick
+- Run the web server with ``ruby ./quiz_server.rb``
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+### Run app
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+``flutter run``

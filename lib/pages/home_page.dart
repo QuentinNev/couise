@@ -1,3 +1,5 @@
+import 'package:couise/managers/game_manager.dart';
+import 'package:couise/widgets/question_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it_mixin/get_it_mixin.dart';
 
@@ -14,19 +16,12 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Question"),
-        /*actions: [
-          IconButton(
-            icon: Icon(Icons.favorite),
-            onPressed:() => Navigator.push(context, MaterialPageRoute(builder:(context) => FavoritePage())),
-          ),
-        ],
-        */
       ),
       body: _QuestionView(),
       floatingActionButton: FloatingActionButton(
         onPressed: QuestionManager.instance.next,
         tooltip: 'New Question',
-        child: const Icon(Icons.subdirectory_arrow_left),
+        child: const Icon(Icons.ac_unit),
       ),
     );
   }
@@ -54,18 +49,17 @@ class _QuestionView extends StatelessWidget with GetItMixin {
   Widget _buildSnapshot(
       BuildContext context, AsyncSnapshot<Question> snapshot) {
     if (snapshot.hasData) {
+      GameManager.instance.addQuestion(snapshot.data!);
+
+      // Display question
       List<Widget> answers = [];
-
       answers.add(QuestionView(snapshot.data!));
-
-      answers.addAll(snapshot.data!.answers.map((value) {
-        return Padding(
-            padding: const EdgeInsets.only(top: 16),
-            child: Text(
-              value,
-              style: TextStyle(color: Colors.blue[200], fontSize: 36),
-            ));
-      }).toList());
+      int i = 0;
+      answers.add(ButtonBar(
+          children: snapshot.data!.answers.map((value) {
+        i++;
+        return QuestionButton(value, i - 1);
+      }).toList()));
 
       return Column(
         mainAxisAlignment: MainAxisAlignment.center,

@@ -1,9 +1,11 @@
+import 'package:couise/managers/game_manager.dart';
 import 'package:couise/managers/question_manager.dart';
 import 'package:couise/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   QuestionManager.register();
+  GameManager.register();
   runApp(const MyApp());
 }
 

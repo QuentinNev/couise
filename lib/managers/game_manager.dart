@@ -1,3 +1,4 @@
+import 'package:couise/managers/question_manager.dart';
 import 'package:couise/models/question.dart';
 import 'package:get_it/get_it.dart';
 
@@ -5,6 +6,9 @@ class GameManager {
   late int score;
   late Question currentQuestion;
   late bool correct;
+
+  late int questionIndex = 0;
+  late int maxQuestions = 3;
 
   GameManager() {
     score = 0;
@@ -22,14 +26,17 @@ class GameManager {
       correct = false;
     }
 
-    // Show answer page
-    
+    questionIndex++;
+
+    if (questionIndex >= maxQuestions) {
+      // FINISH
+    } else {
+      // Next question
+      QuestionManager.instance.next();
+    }
   }
 
-  void nextQuestion()
-  {
-
-  }
+  void nextQuestion() {}
 
   static void register() {
     GetIt.I.registerLazySingleton(() => GameManager());

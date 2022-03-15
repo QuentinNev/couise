@@ -12,11 +12,10 @@ class QuestionButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       child: Text(answer),
-      onPressed: () => GameManager.instance.answerQuestion(answerIndex),
+      onPressed: () => 
+      GameManager.instance.answerQuestion(answerIndex),
       style: ElevatedButton.styleFrom(
-          alignment: Alignment.center,
-          primary: Colors.blue
-          ),
+          alignment: Alignment.center, primary: Colors.blue),
     );
   }
 }

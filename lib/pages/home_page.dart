@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Question"),
+        title: const Text("Couise"),
       ),
       body: _QuestionView(),
       floatingActionButton: FloatingActionButton(
@@ -49,12 +49,13 @@ class _QuestionView extends StatelessWidget with GetItMixin {
   Widget _buildSnapshot(
       BuildContext context, AsyncSnapshot<Question> snapshot) {
     if (snapshot.hasData) {
+      int i = 0;
       GameManager.instance.addQuestion(snapshot.data!);
 
       // Display question
       List<Widget> answers = [];
+      answers.add(Text("Score : " + GameManager.instance.score.toString()));
       answers.add(QuestionView(snapshot.data!));
-      int i = 0;
       answers.add(ButtonBar(
           children: snapshot.data!.answers.map((value) {
         i++;
@@ -67,7 +68,7 @@ class _QuestionView extends StatelessWidget with GetItMixin {
       );
     } else if (snapshot.hasError) {
       return Text('${snapshot.error}',
-          style: TextStyle(color: Colors.red, fontSize: 32));
+          style: const TextStyle(color: Colors.red, fontSize: 32));
     }
     return const CircularProgressIndicator();
   }

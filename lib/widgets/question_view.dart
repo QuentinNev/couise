@@ -5,7 +5,7 @@ class QuestionView extends StatelessWidget {
   final Question question;
   final double padding;
 
-  QuestionView(this.question, {Key? key, this.padding = 16}) : super(key: key);
+  const QuestionView(this.question, {Key? key, this.padding = 16}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class QuestionView extends StatelessWidget {
       padding: EdgeInsets.all(padding),
       child: Column(children: <Widget>[
         Text(question.caption,
-            style: TextStyle(color: Colors.blue, fontSize: 48)),
+            style: const TextStyle(color: Colors.blue, fontSize: 48)),
         Padding(
             padding: const EdgeInsets.only(top: 16),
             child: Text(

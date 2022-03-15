@@ -1,16 +1,22 @@
+import 'package:couise/managers/game_manager.dart';
 import 'package:flutter/material.dart';
 
 class QuestionButton extends StatelessWidget {
   final String answer;
-  final int answer_index;
+  final int answerIndex;
 
-  QuestionButton(this.answer, this.answer_index, {Key? key}) : super(key: key);
+  const QuestionButton(this.answer, this.answerIndex, {Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
+    return ElevatedButton(
       child: Text(answer),
-      onPressed: () {},
+      onPressed: () => GameManager.instance.answerQuestion(answerIndex),
+      style: ElevatedButton.styleFrom(
+          alignment: Alignment.center,
+          primary: Colors.blue
+          ),
     );
   }
 }
